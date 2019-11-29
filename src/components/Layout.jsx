@@ -1,10 +1,15 @@
 import React from "react";
+import { Layout as ThemeLayout, Header, Main, Container } from "theme-ui";
 
 const Layout = ({ children }) => (
-	<div>
-		<h1>Intergroup Site Theme</h1>
-		{children}
-	</div>
+	<ThemeLayout>
+		<Header>Intergroup Site Theme</Header>
+		<Main>
+			<Container>
+				{children}
+			</Container>
+		</Main>
+	</ThemeLayout>
 );
 
 export default Layout;
