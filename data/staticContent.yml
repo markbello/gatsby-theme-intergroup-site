@@ -1,0 +1,8 @@
+- name: Name of Your Group
+  fellowshipAcronym: GA
+  fellowshipLongName: Generic Anonymous
+  groupDescription: A one-paragraph description of your group, which will be the primary text search engines use to index your page. This should contain basic information that is unlikely to change, since it is baked into your site. Everything about your group that can change over time should be loaded in from the CMS so you don't ever have to change this.
+  city: Your City
+  state: Your State
+  country: Your Country
+  cmsGroupId: 0

@@ -1,9 +1,16 @@
-import React from "react";
-import { Layout as ThemeLayout, Header, Main, Container } from "theme-ui";
+import React from 'react';
+import {
+	Layout as ThemeLayout,
+	Header,
+	Main,
+	Container,
+} from 'theme-ui';
 
-const Layout = ({ children }) => (
+const Layout = ({ name, children }) => (
 	<ThemeLayout>
-		<Header>Intergroup Site Theme</Header>
+		<Header>
+			{name}
+		</Header>
 		<Main>
 			<Container>
 				{children}
@@ -11,5 +18,6 @@ const Layout = ({ children }) => (
 		</Main>
 	</ThemeLayout>
 );
+
 
 export default Layout;

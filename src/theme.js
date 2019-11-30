@@ -15,7 +15,7 @@ export const theme = {
 	},
 	sizes: {
 		default: "90vw",
-		max: "540px",
+		max: "960px",
 	},
 	styles: {
 		Layout: {
@@ -33,6 +33,7 @@ export const theme = {
 			padding: 3,
 			width: "default",
 			a: {
+				textAlign: "right",
 				color: "inherit",
 			},
 		},
