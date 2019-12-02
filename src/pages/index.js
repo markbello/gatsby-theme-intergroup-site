@@ -1,6 +1,6 @@
 import React from 'react';
-import { graphql } from "gatsby";
-import ContentContainer from '../components/ContentContainer';
+import { graphql } from 'gatsby';
+import DataLayer from '../components/DataLayer';
 
 export const query = graphql`
   {
@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
 	} = data.allGroup.edges[0].node;
 
 	return (
-		<ContentContainer
+		<DataLayer
 			city={city}
 			cmsGroupId={cmsGroupId}
 			country={country}

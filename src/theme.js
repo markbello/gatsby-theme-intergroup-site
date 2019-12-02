@@ -12,6 +12,9 @@ export const theme = {
 		gray: ["#efefef", "#ddd", "#333", "#111"],
 		background: "#fff",
 		primary: "rebeccapurple",
+		warning: "#E3433F",
+		neutral: "#333",
+		success: "#138107",
 	},
 	sizes: {
 		default: "90vw",
