@@ -35,7 +35,7 @@ export const apiSuccess = ({ data, meta }) => ({
 });
 
 export const getGroupData = (groupId) => (dispatch) => {
-	const baseUrl = 'http://www.intergroup.site';
+	const baseUrl = 'https://www.intergroup.site';
 	const endpoint = 'groups';
 	const method = 'GET';
 	const id = groupId;
