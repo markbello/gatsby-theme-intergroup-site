@@ -8,10 +8,7 @@ import ContentContainer from './ContentContainer';
 
 const store = createStore(
 	reducer,
-	compose(
-		applyMiddleware(thunk),
-		composeWithDevTools()
-	)
+	composeWithDevTools(applyMiddleware(thunk))
 );
 
 const DataLayer = (
