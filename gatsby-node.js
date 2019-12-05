@@ -1,18 +1,18 @@
-const fs = require("fs")
+const fs = require('fs');
 
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
-	const contentPath = options.contentPath || "data";
+  const contentPath = options.contentPath || 'data';
 
-	if (!fs.existsSync(contentPath)) {
-		reporter.info(`creating the ${contentPath} directory`);
-		fs.mkdirSync(contentPath);
-	}
-}
+  if (!fs.existsSync(contentPath)) {
+    reporter.info(`creating the ${contentPath} directory`);
+    fs.mkdirSync(contentPath);
+  }
+};
 
 // Define the "Group" type
 exports.sourceNodes = ({ actions }) => {
-	actions.createTypes(`
+  actions.createTypes(`
     type Group implements Node @dontInfer {
       id: ID!
       name: String!
@@ -26,4 +26,4 @@ exports.sourceNodes = ({ actions }) => {
       slug: String!
     }
   `);
-}
+};
