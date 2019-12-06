@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const StaticContent = ({
 	city,
@@ -28,6 +29,16 @@ const StaticContent = ({
 			</div>
     </section>
 	</div>
-)
+);
+
+StaticContent.propTypes = {
+	city: PropTypes.string.isRequired,
+	country: PropTypes.string.isRequired,
+	fellowshipAcronym: PropTypes.string.isRequired,
+	fellowshipLongName: PropTypes.string.isRequired,
+	groupDescription: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	state: PropTypes.string.isRequired,
+};
 
 export default StaticContent;

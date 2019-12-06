@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Styled from '@emotion/styled';
 import { theme } from '../theme';
 
@@ -14,16 +15,21 @@ const AlertContainer = Styled.div`
 
 // @TODO add a close icon and arbitrate expired vs non-expired alerts
 const Alert = ({
-	content,
-	sentiment,
+  content,
+  sentiment,
 }) => {
-	const color = colors[sentiment];
+  const color = colors[sentiment];
 
-	return (
-		<AlertContainer color={color}>
-			{content}
-		</AlertContainer>
-	);
+  return (
+    <AlertContainer color={color}>
+      {content}
+    </AlertContainer>
+  );
 };
+
+Alert.propTypes = {
+  content: PropTypes.string.isRequired,
+  sentiment: PropTypes.string.isRequired,
+}
 
 export default Alert;
