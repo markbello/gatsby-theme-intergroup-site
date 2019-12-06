@@ -4,6 +4,18 @@ import {
   API_FAILURE,
 } from '../actionTypes';
 
+export const apiFailure = ({ error, meta }) => ({
+  type: API_FAILURE,
+  meta,
+  payload: error,
+});
+
+export const apiSuccess = ({ data, meta }) => ({
+  type: API_SUCCESS,
+  meta,
+  payload: data,
+});
+
 export const apiRequest = (meta) => (dispatch) => {
   dispatch({
     type: API_REQUEST,
@@ -17,22 +29,12 @@ export const apiRequest = (meta) => (dispatch) => {
     id,
   } = meta;
 
+  // @TODO error scenarios (404) are getting handled as success
   return fetch(`${baseUrl}/${endpoint}/${id}`, { method })
     .then((res) => res.json())
-    .then((data) => dispatch(apiSuccess({ data, meta }))) // @TODO error scenarios (404) are getting handled as success
+    .then((data) => dispatch(apiSuccess({ data, meta })))
     .catch((error) => dispatch(apiFailure({ error, meta })));
 };
-
-export const apiFailure = ({ error, meta }) => ({
-  type: API_FAILURE,
-  meta,
-  payload: error,
-});
-export const apiSuccess = ({ data, meta }) => ({
-  type: API_SUCCESS,
-  meta,
-  payload: data,
-});
 
 export const getGroupData = (groupId) => (dispatch) => {
   const baseUrl = 'https://www.intergroup.site';

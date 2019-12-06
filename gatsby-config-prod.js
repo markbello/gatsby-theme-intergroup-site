@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /* This file allows for serving the theme as a dependency in child sites,
 	 rather than as a standalone product. To use it, rename the gatsby-config.js
 	 file to gatsby-config-dev.js and rename this to gatsby-config.js
