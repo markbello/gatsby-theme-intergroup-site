@@ -13,15 +13,11 @@ const AlertContainer = Styled.div`
 	color: ${({ color }) => color};
 `;
 
-// @TODO add a close icon and arbitrate expired vs non-expired alerts
-const Alert = ({
-  content,
-  sentiment,
-}) => {
-  const color = colors[sentiment];
+const Alert = ({ content }) => {
+  const { neutral } = colors;
 
   return (
-    <AlertContainer color={color}>
+    <AlertContainer color={neutral}>
       {content}
     </AlertContainer>
   );
@@ -29,7 +25,6 @@ const Alert = ({
 
 Alert.propTypes = {
   content: PropTypes.string.isRequired,
-  sentiment: PropTypes.string.isRequired,
-}
+};
 
 export default Alert;
