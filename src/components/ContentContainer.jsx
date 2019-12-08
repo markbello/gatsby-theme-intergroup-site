@@ -15,7 +15,7 @@ class ContentContainer extends Component {
 
   render() {
     const {
-      alerts,
+      alert,
       city,
       cmsGroupId,
       country,
@@ -28,9 +28,9 @@ class ContentContainer extends Component {
 
     return (
       <Layout name={name}>
-        {alerts.map(({ sentiment, content }) => (
-          <Alert sentiment={sentiment} content={content} key={content} />
-        ))}
+        {alert && (
+          <Alert content={alert} />
+        )}
         <StaticContent
           city={city}
           cmsGroupId={cmsGroupId}
@@ -40,7 +40,7 @@ class ContentContainer extends Component {
           groupDescription={groupDescription}
           name={name}
           state={state}
-				/>
+        />
         {/* @TODO add dynamic content */}
       </Layout>
     );
@@ -48,7 +48,7 @@ class ContentContainer extends Component {
 }
 
 ContentContainer.propTypes = {
-  alerts: PropTypes.string.isRequired,
+  alert: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   cmsGroupId: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
@@ -61,7 +61,7 @@ ContentContainer.propTypes = {
 };
 
 export const mapStateToProps = (state, { cmsGroupId }) => ({
-  alerts: state.getIn(['requests', 'groups', 'GET', cmsGroupId, 'data', 'alerts'], []),
+  alert: state.getIn(['requests', 'groups', 'GET', cmsGroupId, 'data', 'alert'], ''),
 });
 
 export const mapDispatchToProps = (dispatch) => ({
