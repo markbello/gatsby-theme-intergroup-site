@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { get } from 'lodash';
 
 const EventDetails = ({
   eventId,
@@ -14,17 +15,17 @@ const EventDetails = ({
     }));
 
   const {
-    address: {
-      city,
-      line1,
-      line2,
-      name: venueName,
-      state,
-      zip,
-    },
+    address,
     categories,
     groups,
   } = details;
+
+  const city = get(address, ['city'], '');
+  const line1 = get(address, ['line1'], '');
+  const line2 = get(address, ['line2'], '');
+  const venueName = get(address, ['name'], '');
+  const state = get(address, ['state'], '');
+  const zip = get(address, ['zip'], '');
 
   const addressLines = line2
     ? `${line1}, ${line2}`
