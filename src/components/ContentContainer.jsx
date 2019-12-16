@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getData as getGroupDataAction } from '../core/actions/api';
+import { getData as getDataAction } from '../core/actions/api';
 import setEnvironmentVariablesAction from '../core/actions/utility';
 import StaticContent from './StaticContent';
 import Layout from './Layout';
@@ -79,17 +79,12 @@ ContentContainer.propTypes = {
   country: PropTypes.string.isRequired,
   NODE_ENV: PropTypes.string.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({
-    // addressLine1: PropTypes.string.isRequired,
-    // addressLine2: PropTypes.string,
-    // city: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     endDate: PropTypes.string.isRequired,
     flyerImage: PropTypes.string,
     name: PropTypes.string.isRequired,
     startDate: PropTypes.string.isRequired,
-    // state: PropTypes.string.isRequired,
     venueName: PropTypes.string,
-    // zip: PropTypes.string.isRequired,
   })).isRequired,
   fellowshipAcronym: PropTypes.string.isRequired,
   fellowshipLongName: PropTypes.string.isRequired,
@@ -100,13 +95,18 @@ ContentContainer.propTypes = {
   state: PropTypes.string.isRequired,
 };
 
-export const mapStateToProps = (state, { cmsGroupId }) => ({
-  alert: state.getIn(['requests', 'groups', 'GET', cmsGroupId, 'data', 'alert'], ''),
-  events: state.getIn(['requests', 'groups', 'GET', 1, 'data', 'events'], []),
-});
+export const mapStateToProps = (state, { cmsGroupId }) => {
+  const NODE_ENV = state.getIn(['environment', 'NODE_ENV'], '');
+  const groupId = NODE_ENV === 'development' ? 1 : cmsGroupId;
+
+  return {
+    alert: state.getIn(['requests', 'groups', 'GET', groupId, 'data', 'alert'], ''),
+    events: state.getIn(['requests', 'groups', 'GET', groupId, 'data', 'events'], []),
+  };
+};
 
 export const mapDispatchToProps = (dispatch) => ({
-  getData: (cmsGroupId) => dispatch(getGroupDataAction(cmsGroupId)),
+  getData: ({ API_URL, endpoint, id }) => dispatch(getDataAction({ API_URL, endpoint, id })),
   setEnvironmentVariables: ({ API_URL, NODE_ENV }) => dispatch(setEnvironmentVariablesAction({
     API_URL,
     NODE_ENV,
