@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { get } from 'lodash';
 import { apiRequest } from '../core/actions/api';
 import useEnvironmentVariables from '../core/hooks/useEnvironmentVariables';
 import FormattedDate from './FormattedDate';
@@ -37,12 +38,14 @@ const EventSummary = ({
   name,
   description,
   eventId,
-  flyer: { url: flyerUrl },
+  flyer,
   startDate,
   endDate,
 }) => {
   const dispatch = useDispatch();
   const { API_URL } = useEnvironmentVariables();
+
+  const flyerUrl = get(flyer, ['url'], '');
 
   const [shouldShowDetails, setShouldShowDetails] = useState(false);
   const showDetailsButtonHandler = () => {
@@ -59,20 +62,23 @@ const EventSummary = ({
   return (
     <EventContainer>
       <EventContentContainer>
-        <FlyerContainer>
-          <img src={`${API_URL}/${flyerUrl}`} width="100%" alt={name} />
-        </FlyerContainer>
+        <If condition={flyerUrl}>
+          <FlyerContainer>
+            <img src={`${API_URL}/${flyerUrl}`} width="100%" alt={name} />
+          </FlyerContainer>
+        </If>
         <InfoContainer>
           <h3>{name}</h3>
           <FormattedDate startDate={startDate} endDate={endDate} />
           <p>{description}</p>
-          {shouldShowDetails
-            ? (
+          <Choose>
+            <When condition={shouldShowDetails}>
               <EventDetails eventId={eventId} />
-            )
-            : (
+            </When>
+            <Otherwise>
               <button type="button" onClick={showDetailsButtonHandler}>show details</button>
-            )}
+            </Otherwise>
+          </Choose>
         </InfoContainer>
       </EventContentContainer>
     </EventContainer>
