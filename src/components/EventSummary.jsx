@@ -62,23 +62,20 @@ const EventSummary = ({
   return (
     <EventContainer>
       <EventContentContainer>
-        <If condition={flyerUrl}>
+        {flyerUrl && (
           <FlyerContainer>
             <img src={`${API_URL}/${flyerUrl}`} width="100%" alt={name} />
           </FlyerContainer>
-        </If>
+        )}
         <InfoContainer>
           <h3>{name}</h3>
           <FormattedDate startDate={startDate} endDate={endDate} />
           <p>{description}</p>
-          <Choose>
-            <When condition={shouldShowDetails}>
-              <EventDetails eventId={eventId} />
-            </When>
-            <Otherwise>
-              <button type="button" onClick={showDetailsButtonHandler}>show details</button>
-            </Otherwise>
-          </Choose>
+          {shouldShowDetails ? (
+            <EventDetails eventId={eventId} />
+          ) : (
+            <button type="button" onClick={showDetailsButtonHandler}>show details</button>
+          )}
         </InfoContainer>
       </EventContentContainer>
     </EventContainer>

@@ -1,7 +1,6 @@
 {
   "plugins": [
-    "@babel/plugin-proposal-optional-chaining",
-    "jsx-control-statements"
+    "@babel/plugin-proposal-optional-chaining"
   ],
   "presets": [
     [
