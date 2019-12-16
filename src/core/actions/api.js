@@ -23,26 +23,30 @@ export const apiRequest = (meta) => (dispatch) => {
   });
 
   const {
-    baseUrl,
+    API_URL,
     endpoint,
     method,
     id,
   } = meta;
 
   // @TODO error scenarios (404) are getting handled as success
-  return fetch(`${baseUrl}/${endpoint}/${id}`, { method })
+  return fetch(`${API_URL}/${endpoint}/${id}`, { method })
     .then((res) => res.json())
     .then((data) => dispatch(apiSuccess({ data, meta })))
     .catch((error) => dispatch(apiFailure({ error, meta })));
 };
 
-export const getGroupData = (groupId) => (dispatch) => {
-  const baseUrl = 'https://www.intergroup.site';
-  const endpoint = 'groups';
+export const getData = ({
+  API_URL,
+  endpoint,
+  id,
+}) => (dispatch) => {
   const method = 'GET';
-  const id = groupId;
 
   return dispatch(apiRequest({
-    baseUrl, endpoint, method, id,
+    API_URL,
+    endpoint,
+    method,
+    id,
   }));
 };

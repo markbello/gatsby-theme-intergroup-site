@@ -55,6 +55,13 @@ export const theme = {
       lineHeight: 'heading',
       margin: '1rem 0 0',
     },
+    h2: {
+      color: 'gray.3',
+      fontSize: 2,
+      fontWeight: 'bold',
+      lineHeight: 'heading',
+      margin: '1rem 0 0',
+    },
     ul: {
       borderTop: '1px solid',
       borderColor: 'gray.0',

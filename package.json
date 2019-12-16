@@ -7,7 +7,8 @@
 		"build": "gatsby build",
 		"clean": "gatsby clean",
 		"develop": "gatsby develop",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"test": "jest"
 	},
 	"peerDependencies": {
 		"gatsby": "^2.18.4",
@@ -15,6 +16,8 @@
 		"react-dom": "^16.12.0"
 	},
 	"devDependencies": {
+		"babel-jest": "^24.9.0",
+		"babel-preset-gatsby": "^0.2.26",
 		"eslint": "^6.1.0",
 		"eslint-config-airbnb": "^18.0.1",
 		"eslint-config-react-app": "^5.1.0",
@@ -23,8 +26,11 @@
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^1.7.0",
 		"gatsby": "^2.18.4",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^24.9.0",
 		"react": "^16.12.0",
-		"react-dom": "^16.12.0"
+		"react-dom": "^16.12.0",
+		"react-test-renderer": "^16.12.0"
 	},
 	"dependencies": {
 		"@emotion/core": "^10.0.22",
@@ -37,12 +43,15 @@
 		"gatsby-transformer-yaml": "^2.2.18",
 		"immutable": "^4.0.0-rc.12",
 		"lodash": "^4.17.15",
+		"moment": "^2.24.0",
+		"moment-timezone": "^0.5.27",
 		"prop-types": "^15.7.2",
 		"react-helmet": "^5.2.1",
 		"react-redux": "^7.1.3",
 		"redux": "^4.0.4",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-thunk": "^2.3.0",
+		"reselect": "^4.0.0",
 		"theme-ui": "^0.2.49"
 	}
 }

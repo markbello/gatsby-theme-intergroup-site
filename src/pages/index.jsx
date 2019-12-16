@@ -20,6 +20,14 @@ export const query = graphql`
         }
       }
     }
+    allSite {
+      nodes {
+        siteMetadata {
+          API_URL
+          NODE_ENV
+        }
+      }
+    }
   }
 `;
 
@@ -34,11 +42,13 @@ const IndexPage = ({ data }) => {
     name,
     state,
   } = data.allGroup.edges[0].node;
+  const { API_URL, NODE_ENV } = data.allSite.nodes[0].siteMetadata;
 
   return (
     <>
       <SEO title="Home" name={name} />
       <DataLayer
+        API_URL={API_URL}
         city={city}
         cmsGroupId={cmsGroupId}
         country={country}
@@ -46,6 +56,7 @@ const IndexPage = ({ data }) => {
         fellowshipLongName={fellowshipLongName}
         groupDescription={groupDescription}
         name={name}
+        NODE_ENV={NODE_ENV}
         state={state}
       />
     </>
@@ -68,6 +79,14 @@ IndexPage.propTypes = {
         }),
       })),
     }),
+    allSite: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.shape({
+        siteMetadata: PropTypes.shape({
+          API_URL: PropTypes.string.isRequired,
+          NODE_ENV: PropTypes.string.isRequired,
+        }).isRequired,
+      })).isRequired,
+    }).isRequired,
   }).isRequired,
 };
 

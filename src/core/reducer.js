@@ -4,6 +4,7 @@ import {
   API_REQUEST,
   API_SUCCESS,
   API_FAILURE,
+  SET_ENVIRONMENT_VARIABLES,
 } from './actionTypes';
 
 const initialState = fromJS({
@@ -27,6 +28,9 @@ const reducer = (state = initialState, action) => {
       return state
         .setIn(['requests', endpoint, method, id, 'isLoading'], false)
         .setIn(['requests', endpoint, method, id, 'error'], action.payload);
+    case SET_ENVIRONMENT_VARIABLES:
+      return state
+        .setIn(['environment'], action.payload);
     default:
       return state;
   }

@@ -13,9 +13,11 @@ const store = createStore(
 );
 
 const DataLayer = ({
+  API_URL,
   city,
   cmsGroupId,
   country,
+  NODE_ENV,
   fellowshipAcronym,
   fellowshipLongName,
   groupDescription,
@@ -24,9 +26,11 @@ const DataLayer = ({
 }) => (
   <Provider store={store}>
     <ContentContainer
+      API_URL={API_URL}
       city={city}
       cmsGroupId={cmsGroupId}
       country={country}
+      NODE_ENV={NODE_ENV}
       fellowshipAcronym={fellowshipAcronym}
       fellowshipLongName={fellowshipLongName}
       groupDescription={groupDescription}
@@ -39,9 +43,11 @@ const DataLayer = ({
 DataLayer.displayName = 'DataLayer';
 
 DataLayer.propTypes = {
+  API_URL: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   cmsGroupId: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
+  NODE_ENV: PropTypes.string.isRequired,
   fellowshipAcronym: PropTypes.string.isRequired,
   fellowshipLongName: PropTypes.string.isRequired,
   groupDescription: PropTypes.string.isRequired,
